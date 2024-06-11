@@ -14,4 +14,8 @@ void main() {
   test('test 3', () {
     expect(twoSum([1, 2, 4, 8, 16, 32, 64], 3), [0, 1]);
   });
+
+  test('test 4', () {
+    expect(twoSum([4, -2, 5, 0, 6, 3, 2, 7], 1), [1, 5]);
+  });
 }
