@@ -1,20 +1,20 @@
 void main(List<String> arguments) {
-  longestPalindrome('batataaaaaaaaaaaajaabbaartwlo');
+  longestPalindrome(
+      'jglknendplocymmvwtoxvebkekzfdhykknufqdkntnqvgfbahsljkobhbxkvyictzkqjqydczuxjkgecdyhixdttxfqmgksrkyvopwprsgoszftuhawflzjyuyrujrxluhzjvbflxgcovilthvuihzttzithnsqbdxtafxrfrblulsakrahulwthhbjcslceewxfxtavljpimaqqlcbrdgtgjryjytgxljxtravwdlnrrauxplempnbfeusgtqzjtzshwieutxdytlrrqvyemlyzolhbkzhyfyttevqnfvmpqjngcnazmaagwihxrhmcibyfkccyrqwnzlzqeuenhwlzhbxqxerfifzncimwqsfatudjihtumrtjtggzleovihifxufvwqeimbxvzlxwcsknksogsbwwdlwulnetdysvsfkonggeedtshxqkgbhoscjgpiel');
 }
 
 String longestPalindrome(String s) {
+  final backup = s;
   String maxStr = '';
-  if (s.isEmpty) {
-    return '';
+  if (s.isEmpty || s.length == 1) {
+    return s;
   }
-  for (int i = 0; i < s.length; i++) {
+  while (s.length > 1) {
     var diff = s.length - s.replaceAll(RegExp(s[0]), '').length;
     if (diff <= 1) {
       s = s.replaceAll(RegExp(s[0]), '');
-      i = -1;
       continue;
     }
-
     var indexes = s[0].allMatches(s).toList()
       ..sort((a, b) => b.end.compareTo(a.end));
 
@@ -32,8 +32,9 @@ String longestPalindrome(String s) {
       }
       if (max != '') {
         s = s.substring(1, s.length);
+        break;
       }
     }
   }
-  return maxStr;
+  return maxStr.isEmpty ? backup[0] : maxStr;
 }
