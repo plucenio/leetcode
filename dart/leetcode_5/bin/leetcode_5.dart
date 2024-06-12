@@ -27,13 +27,14 @@ String longestPalindrome(String s) {
           break;
         }
       }
+      if (max == '') {
+        continue;
+      }
       if (maxStr == '' || max.length > maxStr.length) {
         maxStr = max;
       }
-      if (max != '') {
-        s = s.substring(1, s.length);
-        break;
-      }
+      s = s.substring(1, s.length);
+      break;
     }
   }
   return maxStr.isEmpty ? backup[0] : maxStr;
