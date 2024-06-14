@@ -10,13 +10,6 @@ String longestPalindrome(String s) {
     return s;
   }
   while (s.length > 1) {
-    var first2caracters = s.substring(0, 2);
-    var reverse = first2caracters.split('').reversed.join();
-    var diff = s.length - s.replaceAll(reverse, '').length;
-    if (diff <= 1) {
-      s = s.substring(1, s.length);
-      continue;
-    }
     var indexes = s[0].allMatches(s).toList()
       ..sort((a, b) => b.end.compareTo(a.end));
 
